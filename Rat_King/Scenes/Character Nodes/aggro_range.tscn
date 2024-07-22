@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7igs5aexkuxe"]
+
+[ext_resource type="Script" path="res://Scripts/aggro_range.gd" id="1_aptbm"]
+
+[node name="Aggro Range" type="Area2D"]
+script = ExtResource("1_aptbm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
