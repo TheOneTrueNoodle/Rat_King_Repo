@@ -1120,6 +1120,7 @@ weapon_component = NodePath("Melee Attack")
 shape = SubResource("CapsuleShape2D_x38mg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 5
 sprite_frames = SubResource("SpriteFrames_uky0a")
 animation = &"Idle"
 frame = 1

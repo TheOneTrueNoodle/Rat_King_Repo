@@ -1117,6 +1117,7 @@ height = 20.0
 radius = 136.0
 
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("weapon_component", "aggroComponent")]
+z_index = 5
 script = ExtResource("1_j8nqq")
 weapon_component = NodePath("Melee Attack")
 attackRange = 30.0

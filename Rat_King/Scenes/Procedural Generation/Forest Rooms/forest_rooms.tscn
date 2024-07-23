@@ -1,10 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsd2xavw11d21"]
+[gd_scene load_steps=6 format=3 uid="uid://dsd2xavw11d21"]
 
 [ext_resource type="Script" path="res://Scripts/room_holder.gd" id="1_cxqxu"]
 [ext_resource type="PackedScene" uid="uid://dd5hvn2o4sevc" path="res://Scenes/Procedural Generation/Forest Rooms/4 Way Room.tscn" id="2_73dq4"]
+[ext_resource type="PackedScene" uid="uid://ern0hvoqos3u" path="res://Scenes/Procedural Generation/Forest Rooms/Starting Room.tscn" id="2_ijbsv"]
 [ext_resource type="PackedScene" uid="uid://cphtpwx5gugcy" path="res://Scenes/Procedural Generation/Forest Rooms/Long Horizontal Room.tscn" id="3_ji825"]
 [ext_resource type="PackedScene" uid="uid://brlgas7f8o52b" path="res://Scenes/Procedural Generation/Forest Rooms/S Room.tscn" id="4_fxc5e"]
 
 [node name="Forest Rooms" type="Node2D"]
 script = ExtResource("1_cxqxu")
-rooms = Array[PackedScene]([ExtResource("2_73dq4"), ExtResource("2_73dq4"), ExtResource("3_ji825"), ExtResource("4_fxc5e")])
+startingRooms = Array[PackedScene]([ExtResource("2_ijbsv")])
+rooms = Array[PackedScene]([ExtResource("2_73dq4"), ExtResource("3_ji825"), ExtResource("4_fxc5e")])

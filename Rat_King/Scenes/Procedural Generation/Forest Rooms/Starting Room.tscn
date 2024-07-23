@@ -1,0 +1,108 @@
+[gd_scene load_steps=7 format=3 uid="uid://ern0hvoqos3u"]
+
+[ext_resource type="Script" path="res://Scripts/Room.gd" id="1_hhimq"]
+[ext_resource type="TileSet" uid="uid://bu7mtd5cqdwxn" path="res://Forest_Tileset.tres" id="2_av0nb"]
+[ext_resource type="Script" path="res://Scripts/Room_Door.gd" id="3_sb6x5"]
+[ext_resource type="PackedScene" uid="uid://bjnc316k1dhu8" path="res://Scenes/Character Nodes/Player_Character.tscn" id="4_1htbm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b8u2q"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ofi0y"]
+size = Vector2(192, 192)
+
+[node name="4 Way Room" type="Node2D" node_paths=PackedStringArray("northDoor", "southDoor", "eastDoor", "westDoor", "roomArea")]
+script = ExtResource("1_hhimq")
+northDoor = NodePath("North Door")
+southDoor = NodePath("South Door")
+eastDoor = NodePath("East Door")
+westDoor = NodePath("West Door")
+roomArea = NodePath("Room Area")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_av0nb")
+format = 2
+layer_0/name = "Floor"
+layer_0/tile_data = PackedInt32Array(-1, 65536, 1, 65535, 65536, 1, 0, 65536, 1, -65536, 65536, 1, -131075, 65536, 1, -65539, 65536, 1, -3, 65536, 1, 65533, 65536, 1, 131069, 65536, 1, 196605, 65536, 1, 196606, 65536, 1, 196607, 65536, 1, 131072, 65536, 1, 131073, 65536, 1, 131074, 65536, 1, 65538, 65536, 1, 2, 65536, 1, -65534, 65536, 1, -131070, 65536, 1, -196606, 65536, 1, -196607, 65536, 1, -196608, 65536, 1, -131073, 65536, 1, -131074, 65536, 1, -65538, 65536, 1, 131070, 65536, 1, 131071, 65536, 1, -65535, 65536, 1, -131071, 65536, 1, -131072, 65536, 1, -65537, 65536, 1, -2, 65536, 1, 65534, 65536, 1, 65536, 65536, 1, 65537, 65536, 1, 1, 65536, 1, -196612, 65536, 1, -196611, 65536, 1, -196610, 65536, 1, -196609, 65536, 1, -262144, 65536, 1, -262143, 65536, 1, -262142, 65536, 1, -262141, 65536, 1, -196605, 65536, 1, -131069, 65536, 1, -65533, 65536, 1, 3, 65536, 1, 65539, 65536, 1, 131075, 65536, 1, 196611, 65536, 1, 196610, 65536, 1, 196609, 65536, 1, 196608, 65536, 1, 262143, 65536, 1, 262142, 65536, 1, 262141, 65536, 1, 262140, 65536, 1, 196604, 65536, 1, 131068, 65536, 1, 65532, 65536, 1, -4, 65536, 1, -65540, 65536, 1, -131076, 65536, 1, -262145, 65536, 1, -327680, 65536, 1, -393216, 65536, 1, -327681, 65536, 1, -5, 65536, 1, -6, 65536, 1, 65530, 65536, 1, 65531, 65536, 1, -65532, 65536, 1, -65531, 65536, 1, 5, 65536, 1, 4, 65536, 1, 262144, 65536, 1, 327679, 65536, 1, 393215, 65536, 1, 327680, 65536, 1, 65540, 65536, 1, 65541, 65536, 1, 262147, 65536, 1, 262146, 65536, 1, 262145, 65536, 1, 327678, 65536, 1, 327677, 65536, 1, 327676, 65536, 1, 131067, 65536, 1, 131066, 65536, 1, 458751, 65536, 1, 393216, 65536, 1, 393214, 65536, 1, 458750, 65536, 1, 327675, 65536, 1, 262139, 65536, 1, 196603, 65536, 1, 131065, 65536, 1, 65529, 65536, 1, -7, 65536, 1, -65541, 65536, 1, -131077, 65536, 1, -196613, 65536, 1, -262146, 65536, 1, -327682, 65536, 1, 458749, 65536, 1, 393213, 65536, 1, 393212, 65536, 1, 393211, 65536, 1, 393210, 65536, 1, 327674, 65536, 1, 262138, 65536, 1, 196602, 65536, 1, 393217, 65536, 1, 327681, 65536, 1, 327682, 65536, 1, 327683, 65536, 1, 327684, 65536, 1, 131076, 65536, 1, 196612, 65536, 1, 262148, 65536, 1, -131067, 65536, 1, -196603, 65536, 1, -393212, 65536, 1, -327676, 65536, 1, -262140, 65536, 1, -196604, 65536, 1, -131068, 65536, 1, -393213, 65536, 1, -393214, 65536, 1, -393215, 65536, 1, -262147, 65536, 1, -262148, 65536, 1, -327684, 65536, 1, -327685, 65536, 1, -327686, 65536, 1, -131079, 65536, 1, -65543, 65536, 1, -65542, 65536, 1, -131078, 65536, 1, -196614, 65536, 1, -262150, 65536, 1, -327683, 65536, 1, -327679, 65536, 1, -327678, 65536, 1, -327677, 65536, 1, -262149, 65536, 1)
+layer_1/name = "Walls"
+layer_1/tile_data = PackedInt32Array(-327685, 655360, 0, -262149, 655360, 1, -196613, 655360, 2, -327684, 655360, 0, -262148, 655360, 1, -196612, 655360, 2, -327683, 720896, 0, -262147, 720896, 1, -196611, 720896, 2, -393215, 589824, 0, -327679, 589824, 1, -262143, 589824, 2, -393214, 655360, 0, -327678, 655360, 1, -262142, 655360, 2, -393213, 655360, 0, -327677, 655360, 1, -262141, 655360, 2, -327686, 589824, 3, -262150, 524288, 1, -196614, 524288, 1, -131078, 720896, 0, -65542, 720896, 1, -6, 720896, 2, -131079, 655360, 0, -65543, 655360, 1, -7, 655360, 2, -196603, 655360, 0, -131067, 655360, 1, -65531, 655360, 2, -196604, 589824, 0, -131068, 589824, 1, -65532, 589824, 2, -262140, 393216, 1, -327676, 393216, 1, -393212, 524288, 3, 131076, 393216, 0, 131077, 458752, 0, 196612, 393216, 1, 262148, 393216, 1, 327684, 393216, 3, 327681, 393216, 0, 393213, 524288, 0, 393210, 458752, 3, 196602, 524288, 0, 262138, 524288, 1, 327674, 524288, 1, 393211, 458752, 0, 393212, 458752, 0, 327683, 458752, 0, 327682, 458752, 0, 458749, 524288, 1, 393217, 393216, 1, 196601, 458752, 0)
+
+[node name="North Door" type="Node2D" parent="."]
+modulate = Color(0.258824, 1, 1, 1)
+position = Vector2(-8, -88)
+script = ExtResource("3_sb6x5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="North Door"]
+shape = SubResource("RectangleShape2D_b8u2q")
+disabled = true
+
+[node name="TileMap" type="TileMap" parent="North Door"]
+position = Vector2(8, -8)
+tile_set = ExtResource("2_av0nb")
+collision_visibility_mode = 2
+format = 2
+layer_0/tile_data = PackedInt32Array(1, 655360, 0, 65537, 655360, 1, 131073, 655360, 2, 0, 655360, 0, 65536, 655360, 1, 131072, 655360, 2, 65535, 655360, 0, 131071, 655360, 1, 196607, 655360, 2, 65534, 655360, 0, 131070, 655360, 1, 196606, 655360, 2, 65533, 655360, 0, 131069, 655360, 1, 196605, 655360, 2, 65532, 655360, 0, 131068, 655360, 1, 196604, 655360, 2, 2, 655360, 0, 65538, 655360, 1, 131074, 655360, 2)
+
+[node name="South Door" type="Node2D" parent="."]
+modulate = Color(0.258824, 1, 1, 1)
+position = Vector2(-8, 104)
+script = ExtResource("3_sb6x5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="South Door"]
+shape = SubResource("RectangleShape2D_b8u2q")
+disabled = true
+
+[node name="TileMap" type="TileMap" parent="South Door"]
+position = Vector2(24, -8)
+tile_set = ExtResource("2_av0nb")
+collision_visibility_mode = 2
+format = 2
+layer_0/z_index = 3
+layer_0/tile_data = PackedInt32Array(65534, 458752, 1, 65535, 458752, 1, 0, 458752, 1, -65536, 458752, 0, -1, 458752, 0, -2, 458752, 0, -3, 458752, 0, -4, 458752, 0, 65532, 458752, 1, 65533, 458752, 1)
+
+[node name="East Door" type="Node2D" parent="."]
+modulate = Color(0.258824, 1, 1, 1)
+position = Vector2(88, 8)
+script = ExtResource("3_sb6x5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="East Door"]
+shape = SubResource("RectangleShape2D_b8u2q")
+disabled = true
+
+[node name="TileMap" type="TileMap" parent="East Door"]
+position = Vector2(8, -8)
+tile_set = ExtResource("2_av0nb")
+collision_visibility_mode = 2
+format = 2
+layer_0/tile_data = PackedInt32Array(-196610, 393216, 1, -131074, 393216, 1, -65538, 393216, 1, -2, 393216, 1, 65534, 393216, 1, 131070, 393216, 1, 196606, 393216, 1, 262142, 393216, 1, 262143, 458752, 1, 196607, 458752, 1, 131071, 458752, 1, 65535, 458752, 1, -1, 458752, 1, -65537, 458752, 1, -131073, 458752, 1, -196609, 458752, 1)
+
+[node name="West Door" type="Node2D" parent="."]
+modulate = Color(0.258824, 1, 1, 1)
+position = Vector2(-104, 8)
+script = ExtResource("3_sb6x5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="West Door"]
+shape = SubResource("RectangleShape2D_b8u2q")
+disabled = true
+
+[node name="TileMap" type="TileMap" parent="West Door"]
+position = Vector2(8, -8)
+tile_set = ExtResource("2_av0nb")
+collision_visibility_mode = 2
+format = 2
+layer_0/z_index = 2
+layer_0/tile_data = PackedInt32Array(-196609, 458752, 1, -262144, 524288, 1, -131073, 458752, 1, -196608, 524288, 1, -65537, 458752, 1, -131072, 524288, 1, -1, 458752, 1, -65536, 524288, 1, 65535, 458752, 1, 0, 524288, 1, 131071, 458752, 1, 65536, 524288, 1, 196607, 458752, 1, 131072, 524288, 1)
+
+[node name="Room Area" type="Area2D" parent="."]
+collision_layer = 32768
+collision_mask = 32768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room Area"]
+position = Vector2(-8, 8)
+shape = SubResource("RectangleShape2D_ofi0y")
+debug_color = Color(0.921569, 0, 0.694118, 0.117647)
+
+[node name="Player" parent="." instance=ExtResource("4_1htbm")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(3, 3)

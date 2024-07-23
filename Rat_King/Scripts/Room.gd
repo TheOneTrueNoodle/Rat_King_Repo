@@ -1,14 +1,16 @@
 extends Node2D
 class_name Room
 
-@export var northDoor: Node2D
-@export var southDoor: Node2D
-@export var eastDoor: Node2D
-@export var westDoor: Node2D
+@export var northDoor: RoomDoor
+@export var southDoor: RoomDoor
+@export var eastDoor: RoomDoor
+@export var westDoor: RoomDoor
 
 var spawnedDirection: Vector2 #What direction was this room spawned in
 
 @export var roomArea: Area2D
+
+var spawnOrder: int
 
 var connected_rooms = {
 	"East": null, #East
@@ -21,6 +23,18 @@ var number_of_connections = 0
 
 func check_area():
 	if roomArea.has_overlapping_areas():
-		return true
+		var overlappedRooms = roomArea.get_overlapping_areas()
+		for i in overlappedRooms:
+			print(i)
+			if i.owner.spawnOrder < spawnOrder:
+				return true
+		return false
 	else:
 		return false
+
+func open_connected_doors():
+	if northDoor != null and connected_rooms["North"] != null: northDoor.openDoor()
+	if southDoor != null and connected_rooms["South"] != null: southDoor.openDoor()
+	if eastDoor != null and connected_rooms["East"] != null: eastDoor.openDoor()
+	if westDoor != null and connected_rooms["West"] != null: westDoor.openDoor()
+	pass
