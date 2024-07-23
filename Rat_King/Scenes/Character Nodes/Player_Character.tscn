@@ -1112,7 +1112,7 @@ graph_offset = Vector2(-139, -85)
 radius = 5.0
 height = 20.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon_component")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon_component") groups=["Player"]]
 script = ExtResource("1_6v2ma")
 weapon_component = NodePath("Melee Attack")
 

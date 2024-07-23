@@ -22,7 +22,6 @@ text = "GENERATE"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(0.96926, 1.01144)
-enabled = false
 zoom = Vector2(0.6, 0.6)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]

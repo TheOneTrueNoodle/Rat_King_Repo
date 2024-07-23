@@ -28,7 +28,7 @@ var attackCooldown: float = 0.5
 
 #Health Stuff
 @onready var healthComponent = $HealthComponent
-@export var aggroComponent : AggroRange
+@export var aggroComponent: AggroRange
 var stunned: bool = false
 var knockbackDir: Vector2 = Vector2.ZERO
 
@@ -37,8 +37,12 @@ var aggroActive: bool = false
 @export var team: int = 1
 
 func _ready():
+	print(healthComponent)
+	print(aggroComponent)
+	PlayerNode = get_tree().get_nodes_in_group("Player")[0]
 	healthComponent.loseHealth.connect(takeDamage)
 	aggroComponent.callAggro.connect(aggro)
+	reparent(self)
 
 func _physics_process(delta):
 	if !aggroActive:
@@ -67,7 +71,7 @@ func _physics_process(delta):
 
 func move(delta):
 	#Get direction
-	var dir = PlayerNode.position - position
+	var dir = PlayerNode.global_position - global_position
 	
 	if dir == Vector2.ZERO:
 		state = IDLE
@@ -94,7 +98,7 @@ func animate() -> void:
 
 func aim() -> void:
 	if weapon_component:
-		weapon_component.look_at(PlayerNode.position)
+		weapon_component.look_at(PlayerNode.global_position)
 
 func attackCall() -> void:
 	attacking = true
@@ -102,7 +106,7 @@ func attackCall() -> void:
 	sprite.modulate = Color(1,0,0,2)
 	
 	state = IDLE
-	var dir = PlayerNode.position - position
+	var dir = PlayerNode.global_position - global_position
 	blend_position = dir
 	
 	state_machine.travel(animTree_state_keys[state])
@@ -121,8 +125,20 @@ func aggro():
 	aggroActive = true
 
 func die():
+	#Stun enemy
+	attacking = false
+	attackWindUp = 0
+	stunned = true
+	
+	#Knockback
+	knockbackDir = PlayerNode.global_position - global_position #Get knockback direction
+	velocity = -knockbackDir * 5
+	move_and_slide()
+	#Handle sprite colors
 	sprite.modulate = Color(10,10,10,10)
+	#Wait
 	await get_tree().create_timer(0.1).timeout
+	#Delete enemy and spawn loot
 	queue_free()
 
 #Damage Feedback
@@ -133,12 +149,12 @@ func takeDamage():
 	stunned = true
 	
 	#Knockback
-	knockbackDir = PlayerNode.position - position #Get knockback direction
+	knockbackDir = PlayerNode.global_position - global_position #Get knockback direction
 	velocity = -knockbackDir * 5
 	move_and_slide()
 	
 	#Handle sprite colors
-	sprite.modulate = Color(15,15,15,15)
+	sprite.modulate = Color(10,10,10,10)
 	
 	#Wait
 	await get_tree().create_timer(0.1).timeout
