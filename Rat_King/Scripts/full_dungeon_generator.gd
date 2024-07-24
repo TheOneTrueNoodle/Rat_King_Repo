@@ -18,6 +18,8 @@ var newRooms = {} #A dictionary of all rooms generated in the previous frame
 var currentSize
 var generating: bool = false
 
+signal finishedLoading
+
 func _ready():
 	randomize()
 	generate_new_dungeon(randi_range(-1000, 1000))
@@ -187,6 +189,7 @@ func _physics_process(delta):
 		for i in dungeon.keys():
 			dungeon[i].open_connected_doors()
 		generating = false
+		finishedLoading.emit()
 
 #Old dungeon Generator
 func generate_dungeon(room_seed):

@@ -21,17 +21,26 @@ var attacking: bool = false
 
 #Health Stuff
 @onready var healthComponent = $HealthComponent
+@onready var hurtboxComponent = $HurtboxComponent
 @onready var sprite = $AnimatedSprite2D
 
 #Handling Stuff
 @export var team: int = 0
+var hitStun: bool = false
+var knockbackDir: Vector2 = Vector2.ZERO
 
+#UI Signals
+signal changeHealth(amount)
 
 func _ready():
 	healthComponent.loseHealth.connect(takeDamage)
 
 func _physics_process(delta):
 	if attacking:
+		return
+	elif hitStun:
+		velocity = -knockbackDir * 5
+		move_and_slide()
 		return
 	
 	move(delta)
@@ -86,9 +95,23 @@ func onAttackEnd():
 func die():
 	get_tree().quit()
 
+func knockback(source: Node2D):
+	knockbackDir = source.global_position - global_position #Get knockback direction
+
 #Damage Feedback
-func takeDamage():
+func takeDamage(amount):
+	hitStun = true
+	hurtboxComponent.enabled = false
+	
+	#Knockback
+	velocity = -knockbackDir * 10
+	move_and_slide()
+	
+	changeHealth.emit(amount)
 	sprite.modulate = Color(10,10,10,10)
 	await get_tree().create_timer(0.1).timeout
 	sprite.modulate = Color(1,1,1,1)
+	
+	hurtboxComponent.enabled = true
+	hitStun = false
 

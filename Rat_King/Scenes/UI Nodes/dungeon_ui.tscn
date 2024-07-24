@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3mdhpn7nq2uw"]
+
+[ext_resource type="Script" path="res://Scripts/dungeon_ui.gd" id="1_gqc24"]
+[ext_resource type="Script" path="res://Scripts/gas_timer.gd" id="1_vgc56"]
+[ext_resource type="Script" path="res://Scripts/Player HP Bar.gd" id="2_4thwi"]
+
+[node name="Dungeon UI" type="CanvasLayer" node_paths=PackedStringArray("gasTimer", "hpBar")]
+script = ExtResource("1_gqc24")
+gasTimer = NodePath("Gas Timer")
+hpBar = NodePath("Player HP")
+
+[node name="Player HP" type="Control" parent="." node_paths=PackedStringArray("hpBar")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_4thwi")
+hpBar = NodePath("HSlider")
+metadata/_edit_use_anchors_ = true
+
+[node name="HSlider" type="HSlider" parent="Player HP"]
+modulate = Color(1, 0, 0, 1)
+offset_right = 504.0
+offset_bottom = 19.0
+scale = Vector2(1, 3)
+max_value = 4.0
+value = 4.0
+editable = false
+scrollable = false
+
+[node name="Gas Timer" type="Control" parent="." node_paths=PackedStringArray("gasBar")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vgc56")
+totalTime = 300.0
+gasBar = NodePath("VSlider")
+
+[node name="VSlider" type="VSlider" parent="Gas Timer"]
+modulate = Color(0, 0.627451, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0138889
+anchor_top = 0.209877
+anchor_right = 0.0138889
+anchor_bottom = 0.987654
+offset_right = 16.0
+offset_bottom = 8.0
+scale = Vector2(2, 1)
+max_value = 300.0
+step = 0.0
+value = 300.0
+editable = false
+scrollable = false
+metadata/_edit_use_anchors_ = true

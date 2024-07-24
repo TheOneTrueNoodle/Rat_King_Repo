@@ -7,6 +7,7 @@ class_name HitBox
 @onready var animationPlayer = $AnimationPlayer
 var attacking: bool = false
 
+signal inRange
 signal attackEnd
 
 func _init():

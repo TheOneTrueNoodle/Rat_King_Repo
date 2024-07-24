@@ -2,7 +2,7 @@ extends Node2D
 class_name HealthComponent
 
 signal healHealth
-signal loseHealth
+signal loseHealth(amount)
 signal died
 
 @export var maxHealth: int = 5
@@ -14,7 +14,7 @@ func _ready():
 
 func heal(value: int):
 	currentHealth += value
-	healHealth.emit()
+	healHealth.emit(value)
 	if currentHealth > maxHealth:
 		currentHealth = maxHealth
 
@@ -24,7 +24,7 @@ func damage(value: int):
 	if currentHealth <= 0:
 		die()
 	else:
-		loseHealth.emit()
+		loseHealth.emit(value)
 
 func die():
 	died.emit()

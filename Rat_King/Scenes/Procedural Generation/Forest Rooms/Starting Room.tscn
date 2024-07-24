@@ -105,4 +105,4 @@ debug_color = Color(0.921569, 0, 0.694118, 0.117647)
 [node name="Player" parent="." instance=ExtResource("4_1htbm")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)
+zoom = Vector2(2.5, 2.5)

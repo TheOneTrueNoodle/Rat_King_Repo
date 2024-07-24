@@ -142,7 +142,7 @@ func die():
 	queue_free()
 
 #Damage Feedback
-func takeDamage():
+func takeDamage(amount):
 	#Stun enemy
 	attacking = false
 	attackWindUp = 0
