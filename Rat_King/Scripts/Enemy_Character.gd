@@ -37,8 +37,6 @@ var aggroActive: bool = false
 @export var team: int = 1
 
 func _ready():
-	print(healthComponent)
-	print(aggroComponent)
 	PlayerNode = get_tree().get_nodes_in_group("Player")[0]
 	healthComponent.loseHealth.connect(takeDamage)
 	aggroComponent.callAggro.connect(aggro)

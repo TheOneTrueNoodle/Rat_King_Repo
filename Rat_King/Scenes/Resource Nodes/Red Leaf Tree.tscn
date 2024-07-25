@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4h28rmfxa4x8"]
+
+[ext_resource type="Script" path="res://Scripts/ResourceNode.gd" id="1_lm7i7"]
+[ext_resource type="TileSet" uid="uid://bu7mtd5cqdwxn" path="res://Forest_Tileset.tres" id="2_djrsu"]
+[ext_resource type="Script" path="res://Scripts/HealthComponent.gd" id="3_lrnnf"]
+[ext_resource type="Script" path="res://Scripts/HurtboxComponent.gd" id="4_kqost"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_se6hp"]
+size = Vector2(8, 17)
+
+[node name="Tree" type="StaticBody2D"]
+script = ExtResource("1_lm7i7")
+ResourceType = null
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_djrsu")
+format = 2
+layer_0/tile_data = PackedInt32Array(-65537, 983041, 18, -1, 983041, 19, 65535, 983041, 20, -131072, 1048577, 18, -65536, 1048577, 19, 0, 1048577, 20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_se6hp")
+
+[node name="HealthComponent" type="Node2D" parent="."]
+script = ExtResource("3_lrnnf")
+maxHealth = 3
+
+[node name="HurtBox" type="Area2D" parent="."]
+script = ExtResource("4_kqost")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_se6hp")
