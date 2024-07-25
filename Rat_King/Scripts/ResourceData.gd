@@ -2,7 +2,7 @@ extends Node
 class_name ResourceType
 
 enum ResourceType{
-	Wood,
-	Stone,
-	Flesh
+	Wood = 0,
+	Stone = 1,
+	Flesh = 2
 }

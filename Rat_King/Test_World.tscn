@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bomk4mk7w4aqn"]
+[gd_scene load_steps=6 format=3 uid="uid://bomk4mk7w4aqn"]
 
 [ext_resource type="TileSet" uid="uid://bu7mtd5cqdwxn" path="res://Forest_Tileset.tres" id="1_22jfg"]
 [ext_resource type="PackedScene" uid="uid://bjnc316k1dhu8" path="res://Scenes/Character Nodes/Player_Character.tscn" id="1_y3coa"]
+[ext_resource type="PackedScene" uid="uid://b1efmtpsry36j" path="res://Scenes/Resource Nodes/ResourceDrop.tscn" id="4_4gfxq"]
+[ext_resource type="PackedScene" uid="uid://c4h28rmfxa4x8" path="res://Scenes/Resource Nodes/Red Leaf Tree.tscn" id="5_01csh"]
 [ext_resource type="PackedScene" uid="uid://r5isdynaxdsq" path="res://Scenes/Character Nodes/Enemy_Character.tscn" id="10_wowec"]
 
 [node name="Node2D" type="Node2D"]
@@ -36,3 +38,30 @@ tile_set = ExtResource("1_22jfg")
 format = 2
 layer_0/enabled = false
 layer_0/tile_data = PackedInt32Array(131046, 458752, 1, 131047, 524288, 1, 65510, 458752, 1, 65511, 524288, 1, -26, 458752, 1, -25, 524288, 1, -65562, 458752, 1, -65561, 524288, 1, -131098, 458752, 1, -131097, 524288, 1, -196634, 458752, 1, -196633, 524288, 1)
+
+[node name="Wood Resource" parent="." instance=ExtResource("4_4gfxq")]
+position = Vector2(46, 41)
+
+[node name="Wood Resource2" parent="." instance=ExtResource("4_4gfxq")]
+position = Vector2(-46, 54)
+
+[node name="Wood Resource5" parent="." instance=ExtResource("4_4gfxq")]
+position = Vector2(41, 77)
+
+[node name="Wood Resource6" parent="." instance=ExtResource("4_4gfxq")]
+position = Vector2(87, -16)
+
+[node name="Wood Resource7" parent="." instance=ExtResource("4_4gfxq")]
+position = Vector2(135, 29)
+
+[node name="Wood Resource8" parent="." instance=ExtResource("4_4gfxq")]
+position = Vector2(122, -44)
+
+[node name="Wood Resource3" parent="." instance=ExtResource("4_4gfxq")]
+position = Vector2(-21, 93)
+
+[node name="Wood Resource4" parent="." instance=ExtResource("4_4gfxq")]
+position = Vector2(84, 23)
+
+[node name="Tree" parent="." instance=ExtResource("5_01csh")]
+position = Vector2(-125, -75)

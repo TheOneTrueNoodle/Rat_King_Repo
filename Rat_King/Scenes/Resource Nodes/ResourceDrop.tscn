@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c8pf4sqjt33em" path="res://Art/Prototype Assets/resources_basic.png" id="2_2oqst"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xlcxb"]
-radius = 13.0384
+radius = 9.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wc2iw"]
 atlas = ExtResource("2_2oqst")
@@ -35,12 +35,17 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Area2D" type="Area2D"]
+[node name="Area2D" type="Area2D" node_paths=PackedStringArray("sprite", "collider")]
+z_index = 6
 script = ExtResource("1_b4cvs")
+sprite = NodePath("AnimatedSprite2D")
+collider = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xlcxb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_2jeru")
-frame_progress = 0.152531
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

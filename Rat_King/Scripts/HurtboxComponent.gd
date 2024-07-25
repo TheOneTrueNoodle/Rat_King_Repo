@@ -12,6 +12,8 @@ func _on_area_entered(hitbox: HitBox) -> void:
 	if hitbox == null or hitbox.team == team or enabled == false:
 		return
 	
+	print("Detected Hit")
+	
 	if owner.has_node("HealthComponent"):
 		owner.get_node("HealthComponent").damage(hitbox.damage)
 	if owner.is_in_group("Player"):

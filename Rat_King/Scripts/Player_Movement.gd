@@ -29,6 +29,11 @@ var attacking: bool = false
 var hitStun: bool = false
 var knockbackDir: Vector2 = Vector2.ZERO
 
+#Held Resources Stuff
+@export var maxHeldResources: int = 5
+var heldResources = {}
+@onready var heldResourceParent = $HeldResourceParent
+
 #UI Signals
 signal changeHealth(amount)
 
@@ -115,3 +120,8 @@ func takeDamage(amount):
 	hurtboxComponent.enabled = true
 	hitStun = false
 
+#HANDLE RESOURCE STUFF
+func PickedUpResource(resource):
+	resource.reparent(heldResourceParent)
+	resource.position = heldResourceParent.position + (Vector2(0,-5) * heldResources.size())
+	heldResources[heldResources.size()] = resource

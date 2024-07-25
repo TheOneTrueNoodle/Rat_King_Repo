@@ -1152,4 +1152,7 @@ modulate = Color(0, 1, 0, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 shape = SubResource("CapsuleShape2D_lgrj3")
 
+[node name="HeldResourceParent" type="Node2D" parent="."]
+position = Vector2(0, -6)
+
 [connection signal="attackEnd" from="Melee Attack" to="." method="onAttackEnd"]

@@ -40,7 +40,7 @@ func _ready():
 	PlayerNode = get_tree().get_nodes_in_group("Player")[0]
 	healthComponent.loseHealth.connect(takeDamage)
 	aggroComponent.callAggro.connect(aggro)
-	reparent(self)
+	get_parent().remove_child(self)
 
 func _physics_process(delta):
 	if !aggroActive:
