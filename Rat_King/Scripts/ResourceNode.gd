@@ -4,6 +4,7 @@ class_name ResourceNode
 #Resource Stuff
 @export var type: ResourceType.ResourceType
 @export var resourceScene: PackedScene
+var knockbackDir = Vector2.ZERO
 
 #Health Stuff
 @onready var healthComponent = $HealthComponent
@@ -13,7 +14,9 @@ class_name ResourceNode
 
 func _ready():
 	healthComponent.loseHealth.connect(takeDamage)
-	get_parent().remove_child(self)
+
+func knockback(source: Node2D):
+	knockbackDir = source.global_position - global_position #Get knockback direction
 
 #Damage Feedback
 func takeDamage(amount):
@@ -22,9 +25,10 @@ func takeDamage(amount):
 	
 	#Drop resource
 	var newResource = resourceScene.instantiate()
+	newResource.global_position = global_position
 	get_tree().root.add_child(newResource)
-	newResource.global_position = global_position + (Vector2.RIGHT * 5)
-	newResource.spawn(type)
+	newResource.spawn(type, -knockbackDir)
+	print(knockbackDir)
 	
 	#Wait
 	await get_tree().create_timer(0.1).timeout
@@ -39,8 +43,8 @@ func die():
 	#Drop resource
 	var newResource = resourceScene.instantiate()
 	get_tree().root.add_child(newResource)
-	newResource.global_position = global_position + (Vector2.RIGHT * 5)
-	newResource.spawn(type)
+	newResource.global_position = global_position
+	newResource.spawn(type, -knockbackDir)
 	
 	#Wait
 	await get_tree().create_timer(0.1).timeout

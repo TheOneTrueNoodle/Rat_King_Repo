@@ -36,11 +36,13 @@ var knockbackDir: Vector2 = Vector2.ZERO
 var aggroActive: bool = false
 @export var team: int = 1
 
+#Resource Stuff
+@export var resourceScene: PackedScene
+
 func _ready():
 	PlayerNode = get_tree().get_nodes_in_group("Player")[0]
 	healthComponent.loseHealth.connect(takeDamage)
 	aggroComponent.callAggro.connect(aggro)
-	get_parent().remove_child(self)
 
 func _physics_process(delta):
 	if !aggroActive:
@@ -137,6 +139,10 @@ func die():
 	#Wait
 	await get_tree().create_timer(0.1).timeout
 	#Delete enemy and spawn loot
+	var newResource = resourceScene.instantiate()
+	get_tree().root.add_child(newResource)
+	newResource.global_position = global_position
+	newResource.spawn(ResourceType.ResourceType.Flesh, -knockbackDir)
 	queue_free()
 
 #Damage Feedback

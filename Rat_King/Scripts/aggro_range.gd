@@ -8,12 +8,14 @@ func _init() -> void:
 	collision_layer = 0
 	collision_mask = 1
 
-func _on_body_entered(player: Player) -> void:
+func _on_body_entered(body) -> void:
 	print("Collision Detected")
-	if player == null:
+	if !body.is_in_group("Player"):
+		return
+	if body == null:
 		print("Character Null")
 		return
-	if player.team == team:
+	if body.team == team:
 		print("Same Team")
 		return
 	

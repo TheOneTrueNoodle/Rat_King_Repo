@@ -9,7 +9,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_se6hp"]
 size = Vector2(8, 17)
 
-[node name="Tree" type="StaticBody2D"]
+[node name="Tree" type="StaticBody2D" groups=["Resource"]]
 z_index = 6
 script = ExtResource("1_lm7i7")
 resourceScene = ExtResource("2_471kv")

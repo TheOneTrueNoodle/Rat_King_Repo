@@ -14,7 +14,7 @@ func _on_area_entered(hitbox: HitBox) -> void:
 	
 	print("Detected Hit")
 	
+	if owner.is_in_group("Player") or owner.is_in_group("Resource"):
+		owner.knockback(hitbox)
 	if owner.has_node("HealthComponent"):
 		owner.get_node("HealthComponent").damage(hitbox.damage)
-	if owner.is_in_group("Player"):
-		owner.knockback(hitbox)

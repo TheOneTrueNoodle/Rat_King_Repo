@@ -30,7 +30,7 @@ var hitStun: bool = false
 var knockbackDir: Vector2 = Vector2.ZERO
 
 #Held Resources Stuff
-@export var maxHeldResources: int = 5
+@export var maxHeldResources: int = 8
 var heldResources = {}
 @onready var heldResourceParent = $HeldResourceParent
 
@@ -122,6 +122,15 @@ func takeDamage(amount):
 
 #HANDLE RESOURCE STUFF
 func PickedUpResource(resource):
+	for i in heldResources:
+		if heldResources[i] == resource:
+			return
 	resource.reparent(heldResourceParent)
 	resource.position = heldResourceParent.position + (Vector2(0,-5) * heldResources.size())
 	heldResources[heldResources.size()] = resource
+
+func DepositResource():
+	heldResources.erase(heldResources.size() - 1)
+	if heldResources.is_empty():
+		heldResources.clear()
+	print("Resources: " + str(heldResources.size()))
