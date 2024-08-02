@@ -9,7 +9,7 @@
 script = ExtResource("1_arp2b")
 dungeon_type = ExtResource("2_qnp41")
 min_number_rooms = 15
-max_number_of_rooms = 17
+max_number_of_rooms = 30
 
 [node name="Dungeon UI" parent="." instance=ExtResource("3_24bjo")]
 
@@ -26,7 +26,7 @@ text = "GENERATE"
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(0.96926, 1.01144)
 enabled = false
-zoom = Vector2(0.6, 0.6)
+zoom = Vector2(0.3, 0.3)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 

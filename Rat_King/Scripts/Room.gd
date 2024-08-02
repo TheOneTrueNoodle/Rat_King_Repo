@@ -12,6 +12,11 @@ var spawnedDirection: Vector2 #What direction was this room spawned in
 
 var spawnOrder: int
 
+#var EastRoom: Room = null
+#var NorthRoom: Room = null
+#var SouthRoom: Room = null
+#var WestRoom: Room = null
+
 var connected_rooms = {
 	"East": null, #East
 	"West": null, #West
