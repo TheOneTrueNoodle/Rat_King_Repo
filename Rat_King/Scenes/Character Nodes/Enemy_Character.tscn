@@ -1115,11 +1115,13 @@ radius = 5.0
 height = 20.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0wscw"]
-radius = 136.0
+radius = 72.1734
 
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("weapon_component", "aggroComponent") groups=["Enemy"]]
 z_index = 5
 collision_mask = 3
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_j8nqq")
 weapon_component = NodePath("Melee Attack")
 attackRange = 25.0
@@ -1173,4 +1175,15 @@ team = 1
 shape = SubResource("CircleShape2D_0wscw")
 debug_color = Color(1, 1, 1, 0.419608)
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Chase Timer" type="Timer" parent="NavigationAgent2D"]
+wait_time = 0.5
+
+[node name="Wander Timer" type="Timer" parent="."]
+wait_time = 6.0
+autostart = true
+
 [connection signal="attackEnd" from="Melee Attack" to="." method="onAttackEnd"]
+[connection signal="timeout" from="NavigationAgent2D/Chase Timer" to="." method="_on_chase_timer_timeout"]
+[connection signal="timeout" from="Wander Timer" to="." method="_on_wander_timer_timeout"]
