@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://ern0hvoqos3u"]
+[gd_scene load_steps=9 format=3 uid="uid://ern0hvoqos3u"]
 
 [ext_resource type="Script" path="res://Scripts/Room.gd" id="1_hhimq"]
 [ext_resource type="TileSet" uid="uid://bu7mtd5cqdwxn" path="res://Forest_Tileset.tres" id="2_av0nb"]
 [ext_resource type="Script" path="res://Scripts/Room_Door.gd" id="3_sb6x5"]
 [ext_resource type="PackedScene" uid="uid://bjnc316k1dhu8" path="res://Scenes/Character Nodes/Player_Character.tscn" id="4_1htbm"]
 [ext_resource type="PackedScene" uid="uid://b6255d75o6e8x" path="res://Scenes/Resource Nodes/deposit_house.tscn" id="5_cm354"]
+[ext_resource type="PackedScene" uid="uid://d35wxbfjkyotv" path="res://Scenes/Character Nodes/player_camera.tscn" id="6_wn3ol"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b8u2q"]
 size = Vector2(16, 16)
@@ -86,11 +87,11 @@ position = Vector2(-8, 8)
 shape = SubResource("RectangleShape2D_ofi0y")
 debug_color = Color(0.921569, 0, 0.694118, 0.117647)
 
+[node name="Deposit House" parent="." instance=ExtResource("5_cm354")]
+position = Vector2(0, -104)
+
 [node name="Player" parent="." instance=ExtResource("4_1htbm")]
 position = Vector2(0, 32)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(2.5, 2.5)
-
-[node name="Deposit House" parent="." instance=ExtResource("5_cm354")]
-position = Vector2(0, -104)
+[node name="Player Camera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_wn3ol")]
+player = NodePath("../Player")

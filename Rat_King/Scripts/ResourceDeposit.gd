@@ -7,7 +7,7 @@ extends StaticBody2D
 var player
 
 var playerInArea: bool = false
-const timeBetweenDepo: float = 0.2
+const timeBetweenDepo: float = 0.1
 var currentTime: float
 
 var depositedResources = {
