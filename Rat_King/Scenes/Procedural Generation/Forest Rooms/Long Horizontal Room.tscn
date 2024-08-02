@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cphtpwx5gugcy"]
+[gd_scene load_steps=7 format=3 uid="uid://cphtpwx5gugcy"]
 
 [ext_resource type="Script" path="res://Scripts/Room.gd" id="1_7bc4k"]
 [ext_resource type="TileSet" uid="uid://bu7mtd5cqdwxn" path="res://Forest_Tileset.tres" id="2_sn73o"]
 [ext_resource type="Script" path="res://Scripts/Room_Door.gd" id="3_1ejjf"]
+[ext_resource type="PackedScene" uid="uid://cp4ufupepeiga" path="res://Scenes/Character Nodes/enemy_spawner.tscn" id="4_bcax1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b8u2q"]
 size = Vector2(16, 16)
@@ -66,3 +67,15 @@ collision_mask = 32768
 position = Vector2(96, 8)
 shape = SubResource("RectangleShape2D_6m8e5")
 debug_color = Color(0.921569, 0, 0.694118, 0.117647)
+
+[node name="Enemy Spawner" parent="." instance=ExtResource("4_bcax1")]
+position = Vector2(48, 0)
+
+[node name="Enemy Spawner2" parent="." instance=ExtResource("4_bcax1")]
+position = Vector2(136, 0)
+
+[node name="Enemy Spawner3" parent="." instance=ExtResource("4_bcax1")]
+position = Vector2(88, -32)
+
+[node name="Enemy Spawner4" parent="." instance=ExtResource("4_bcax1")]
+position = Vector2(104, 32)

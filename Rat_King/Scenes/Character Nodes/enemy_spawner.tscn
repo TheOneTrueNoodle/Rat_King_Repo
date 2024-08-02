@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cp4ufupepeiga"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy Spawner.gd" id="1_ws6x1"]
+[ext_resource type="PackedScene" uid="uid://r5isdynaxdsq" path="res://Scenes/Character Nodes/Enemy_Character.tscn" id="2_dsnqi"]
+[ext_resource type="TileSet" uid="uid://bu7mtd5cqdwxn" path="res://Forest_Tileset.tres" id="3_shbvv"]
+
+[node name="Enemy Spawner" type="Node2D"]
+script = ExtResource("1_ws6x1")
+spawnable_enemies = Array[PackedScene]([ExtResource("2_dsnqi")])
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("3_shbvv")
+format = 2
+layer_0/tile_data = PackedInt32Array(-1, 655361, 2, 65535, 655361, 3, -65536, 720897, 2, 0, 720897, 3)
+
+[node name="Camera2D" type="Camera2D" parent="TileMap"]
+zoom = Vector2(5, 5)

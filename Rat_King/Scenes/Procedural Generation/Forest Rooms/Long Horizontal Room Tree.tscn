@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cl1nfg3o286jx"]
+[gd_scene load_steps=8 format=3 uid="uid://cl1nfg3o286jx"]
 
 [ext_resource type="Script" path="res://Scripts/Room.gd" id="1_upjpc"]
 [ext_resource type="TileSet" uid="uid://bu7mtd5cqdwxn" path="res://Forest_Tileset.tres" id="2_gj2sq"]
 [ext_resource type="Script" path="res://Scripts/Room_Door.gd" id="3_h5xjd"]
 [ext_resource type="PackedScene" uid="uid://c4h28rmfxa4x8" path="res://Scenes/Resource Nodes/Red Leaf Tree.tscn" id="4_1d6fa"]
+[ext_resource type="PackedScene" uid="uid://cp4ufupepeiga" path="res://Scenes/Character Nodes/enemy_spawner.tscn" id="5_sb32u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b8u2q"]
 size = Vector2(16, 16)
@@ -73,3 +74,6 @@ position = Vector2(8, 40)
 
 [node name="Tree2" parent="." instance=ExtResource("4_1d6fa")]
 position = Vector2(192, -16)
+
+[node name="Enemy Spawner" parent="." instance=ExtResource("5_sb32u")]
+position = Vector2(104, 8)

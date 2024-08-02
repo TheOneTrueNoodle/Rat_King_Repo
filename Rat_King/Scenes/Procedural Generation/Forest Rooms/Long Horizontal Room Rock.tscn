@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://k8hsg41phyho"]
+[gd_scene load_steps=8 format=3 uid="uid://k8hsg41phyho"]
 
 [ext_resource type="Script" path="res://Scripts/Room.gd" id="1_5vjgk"]
 [ext_resource type="TileSet" uid="uid://bu7mtd5cqdwxn" path="res://Forest_Tileset.tres" id="2_4prf3"]
 [ext_resource type="Script" path="res://Scripts/Room_Door.gd" id="3_lwvf5"]
 [ext_resource type="PackedScene" uid="uid://bf8rdppjt5ud4" path="res://Scenes/Resource Nodes/Rock.tscn" id="4_kwoar"]
+[ext_resource type="PackedScene" uid="uid://cp4ufupepeiga" path="res://Scenes/Character Nodes/enemy_spawner.tscn" id="5_646pj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b8u2q"]
 size = Vector2(16, 16)
@@ -73,3 +74,6 @@ position = Vector2(48, -8)
 
 [node name="Rock2" parent="." instance=ExtResource("4_kwoar")]
 position = Vector2(176, 40)
+
+[node name="Enemy Spawner" parent="." instance=ExtResource("5_646pj")]
+position = Vector2(104, 8)
