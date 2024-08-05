@@ -1,7 +1,7 @@
 extends Node2D
 
 #This script handles all resources currently in the base!
-@onready var buildingLevel: Building = $"Building Level Handler"
+@onready var buildingData: Building = $Building
 
 var teeth: int #Currency!
 
@@ -16,8 +16,8 @@ var resources = {
 
 func increaseResource(resource: String, amount: int):
 	resources[resource] += amount
-	if(resources[resource] > (baseMaxResource * buildingLevel.currentLevel)):
-		resources[resource] = baseMaxResource *  buildingLevel.currentLevel
+	if(resources[resource] > (baseMaxResource * buildingData.currentLevel)):
+		resources[resource] = baseMaxResource *  buildingData.currentLevel
 
 func decreaseResource(resource:String, amount: int):
 	resources[resource] -= amount

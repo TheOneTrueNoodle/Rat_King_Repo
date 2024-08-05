@@ -1,10 +1,67 @@
-[gd_scene load_steps=4 format=3 uid="uid://cd21l4ie4jtmd"]
+[gd_scene load_steps=6 format=3 uid="uid://cd21l4ie4jtmd"]
 
 [ext_resource type="PackedScene" uid="uid://8axatdbh4k04" path="res://Scenes/Base Building/Resource Building.tscn" id="1_7m624"]
+[ext_resource type="Script" path="res://Scenes/Base Building/Base Builder UI.gd" id="1_gktj0"]
+[ext_resource type="PackedScene" uid="uid://bsll6qbqnp4dy" path="res://Scenes/Base Building/UpgradeButton.tscn" id="2_6h520"]
 [ext_resource type="PackedScene" uid="uid://dq1fjdf654n7x" path="res://Scenes/Base Building/Construction Building.tscn" id="2_cd5jo"]
 [ext_resource type="Script" path="res://Scripts/Building Manager.gd" id="2_iggu3"]
 
 [node name="Base Builder" type="Node2D"]
+
+[node name="Base Builder UI" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+script = ExtResource("1_gktj0")
+buildingUpgradeButton = ExtResource("2_6h520")
+
+[node name="Construction Button" type="Button" parent="Base Builder UI"]
+offset_left = -551.0
+offset_top = -298.0
+offset_right = -323.0
+offset_bottom = -235.0
+theme_override_font_sizes/font_size = 32
+text = "Construction
+"
+
+[node name="Construction Menu" type="Control" parent="Base Builder UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Close Button" type="Button" parent="Base Builder UI/Construction Menu"]
+layout_mode = 0
+offset_left = -551.0
+offset_top = -298.0
+offset_right = -323.0
+offset_bottom = -235.0
+theme_override_font_sizes/font_size = 32
+text = "Close
+"
+
+[node name="Panel" type="Panel" parent="Base Builder UI/Construction Menu"]
+layout_mode = 0
+offset_top = -302.0
+offset_right = 551.0
+offset_bottom = 305.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Base Builder UI/Construction Menu/Panel"]
+layout_mode = 0
+offset_left = 25.0
+offset_right = 491.0
+offset_bottom = 608.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Base Builder UI/Construction Menu/Panel/ScrollContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(460, 65)
+layout_mode = 2
+
+[node name="VScrollBar" type="VScrollBar" parent="Base Builder UI/Construction Menu/Panel"]
+layout_mode = 0
+offset_left = 510.0
+offset_top = 10.0
+offset_right = 549.0
+offset_bottom = 603.0
 
 [node name="Building Manager" type="Node2D" parent="."]
 script = ExtResource("2_iggu3")
@@ -12,3 +69,8 @@ script = ExtResource("2_iggu3")
 [node name="Construction Building" parent="." instance=ExtResource("2_cd5jo")]
 
 [node name="Resource Building" parent="." instance=ExtResource("1_7m624")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="pressed" from="Base Builder UI/Construction Button" to="Base Builder UI" method="openConstructionMenu"]
+[connection signal="pressed" from="Base Builder UI/Construction Menu/Close Button" to="Base Builder UI" method="closeConstructionMenu"]

@@ -1,4 +1,9 @@
 extends Node2D
 
-func upgradeBuilding(building: String):
-	pass
+@onready var buildingData: Building = $Building
+
+func upgradeBuilding(building: Building):
+	if building.currentLevel < building.maxLevel and building.currentLevel < buildingData.currentLevel:
+		building.levelUp()
+	elif building == buildingData:
+		building.levelUp()

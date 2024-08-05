@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bsll6qbqnp4dy"]
+
+[node name="Button" type="Button"]
+theme_override_font_sizes/font_size = 32
+text = "Building A
+"

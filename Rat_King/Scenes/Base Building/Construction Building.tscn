@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Building Handler.gd" id="1_4bo6g"]
 [ext_resource type="Script" path="res://Scripts/Construction Building.gd" id="1_o8jxr"]
 
-[node name="Construction Building" type="Node2D"]
+[node name="Construction Building" type="Node2D" groups=["Building"]]
 script = ExtResource("1_o8jxr")
 
 [node name="Building" type="Node2D" parent="."]
