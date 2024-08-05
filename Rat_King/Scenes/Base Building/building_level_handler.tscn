@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ci6q4aqf8wpfo"]
+
+[ext_resource type="Script" path="res://Scripts/Building Level Handler.gd" id="1_2v08v"]
+
+[node name="Building Level Handler" type="Node2D"]
+script = ExtResource("1_2v08v")
