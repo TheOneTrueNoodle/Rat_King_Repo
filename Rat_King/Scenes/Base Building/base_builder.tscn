@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cd21l4ie4jtmd"]
+[gd_scene load_steps=7 format=3 uid="uid://cd21l4ie4jtmd"]
 
 [ext_resource type="PackedScene" uid="uid://8axatdbh4k04" path="res://Scenes/Base Building/Resource Building.tscn" id="1_7m624"]
 [ext_resource type="Script" path="res://Scenes/Base Building/Base Builder UI.gd" id="1_gktj0"]
 [ext_resource type="PackedScene" uid="uid://bsll6qbqnp4dy" path="res://Scenes/Base Building/UpgradeButton.tscn" id="2_6h520"]
 [ext_resource type="PackedScene" uid="uid://dq1fjdf654n7x" path="res://Scenes/Base Building/Construction Building.tscn" id="2_cd5jo"]
 [ext_resource type="Script" path="res://Scripts/Building Manager.gd" id="2_iggu3"]
+[ext_resource type="Texture2D" uid="uid://c8pf4sqjt33em" path="res://Art/Prototype Assets/resources_basic.png" id="3_etf2s"]
 
 [node name="Base Builder" type="Node2D"]
 
@@ -62,6 +63,154 @@ offset_left = 510.0
 offset_top = 10.0
 offset_right = 549.0
 offset_bottom = 603.0
+
+[node name="Resources Display" type="Control" parent="Base Builder UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Wood" type="Control" parent="Base Builder UI/Resources Display"]
+anchors_preset = 0
+offset_left = -535.0
+offset_top = 285.0
+offset_right = -495.0
+offset_bottom = 325.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Base Builder UI/Resources Display/Wood"]
+scale = Vector2(2.59091, 2.59091)
+texture = ExtResource("3_etf2s")
+hframes = 11
+vframes = 11
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Base Builder UI/Resources Display/Wood"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = -12.0
+offset_right = 136.0
+offset_bottom = 22.0
+theme_override_font_sizes/normal_font_size = 24
+text = "0 / 30"
+
+[node name="Stone" type="Control" parent="Base Builder UI/Resources Display"]
+anchors_preset = 0
+offset_left = -535.0
+offset_top = 225.0
+offset_right = -495.0
+offset_bottom = 265.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Base Builder UI/Resources Display/Stone"]
+scale = Vector2(2.59091, 2.59091)
+texture = ExtResource("3_etf2s")
+hframes = 11
+vframes = 11
+frame = 34
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Base Builder UI/Resources Display/Stone"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = -12.0
+offset_right = 136.0
+offset_bottom = 22.0
+theme_override_font_sizes/normal_font_size = 24
+text = "0 / 30"
+
+[node name="Metal" type="Control" parent="Base Builder UI/Resources Display"]
+anchors_preset = 0
+offset_left = -535.0
+offset_top = 165.0
+offset_right = -495.0
+offset_bottom = 205.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Base Builder UI/Resources Display/Metal"]
+scale = Vector2(2.59091, 2.59091)
+texture = ExtResource("3_etf2s")
+hframes = 11
+vframes = 11
+frame = 59
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Base Builder UI/Resources Display/Metal"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = -12.0
+offset_right = 136.0
+offset_bottom = 22.0
+theme_override_font_sizes/normal_font_size = 24
+text = "0 / 30"
+
+[node name="Medicine" type="Control" parent="Base Builder UI/Resources Display"]
+anchors_preset = 0
+offset_left = -535.0
+offset_top = 105.0
+offset_right = -495.0
+offset_bottom = 145.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Base Builder UI/Resources Display/Medicine"]
+scale = Vector2(2.59091, 2.59091)
+texture = ExtResource("3_etf2s")
+hframes = 11
+vframes = 11
+frame = 101
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Base Builder UI/Resources Display/Medicine"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = -12.0
+offset_right = 136.0
+offset_bottom = 22.0
+theme_override_font_sizes/normal_font_size = 24
+text = "0 / 30"
+
+[node name="Food" type="Control" parent="Base Builder UI/Resources Display"]
+anchors_preset = 0
+offset_left = -535.0
+offset_top = 45.0
+offset_right = -495.0
+offset_bottom = 85.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Base Builder UI/Resources Display/Food"]
+scale = Vector2(2.59091, 2.59091)
+texture = ExtResource("3_etf2s")
+hframes = 11
+vframes = 11
+frame = 78
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Base Builder UI/Resources Display/Food"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = -12.0
+offset_right = 136.0
+offset_bottom = 22.0
+theme_override_font_sizes/normal_font_size = 24
+text = "0 / 30"
+
+[node name="Teeth" type="Control" parent="Base Builder UI/Resources Display"]
+anchors_preset = 0
+offset_left = -535.0
+offset_top = -25.0
+offset_right = -495.0
+offset_bottom = 15.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Base Builder UI/Resources Display/Teeth"]
+scale = Vector2(2.59091, 2.59091)
+texture = ExtResource("3_etf2s")
+hframes = 11
+vframes = 11
+frame = 104
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Base Builder UI/Resources Display/Teeth"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = -12.0
+offset_right = 136.0
+offset_bottom = 22.0
+theme_override_font_sizes/normal_font_size = 24
+text = "0"
+
+[node name="Debug increase resource button" type="Button" parent="Base Builder UI"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "+++ Resources"
 
 [node name="Building Manager" type="Node2D" parent="."]
 script = ExtResource("2_iggu3")
