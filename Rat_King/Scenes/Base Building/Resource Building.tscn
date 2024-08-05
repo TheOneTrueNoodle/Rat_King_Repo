@@ -12,3 +12,4 @@ buildingName = "Storage"
 currentLevel = 1
 baseWoodCost = 15
 baseStoneCost = 15
+baseMetalCost = 15

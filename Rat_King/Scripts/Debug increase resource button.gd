@@ -1,11 +1,13 @@
 extends Button
 
+@onready var ResourceBuilding = $"../../Resource Building"
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _on_pressed():
+	var amount = randi_range(5, 11)
+	
+	var type = randi_range(0,4)
+	if type == 0: ResourceBuilding.increaseResource("Wood", amount)
+	elif type == 1: ResourceBuilding.increaseResource("Stone", amount)
+	elif type == 2: ResourceBuilding.increaseResource("Metal", amount)
+	elif type == 3: ResourceBuilding.increaseResource("Medicine", amount)
+	elif type == 4: ResourceBuilding.increaseResource("Food", amount)

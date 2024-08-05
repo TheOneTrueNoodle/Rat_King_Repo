@@ -5,6 +5,7 @@ extends CanvasLayer
 
 # Construction Menu Variables
 @onready var constructionBuilding = $"../Construction Building"
+var constructionMenuOpen: bool = false
 
 @onready var constructionMenu = $"Construction Menu"
 @onready var openConstructionButton = $"Construction Button"
@@ -29,10 +30,12 @@ func updateResourceDisplay():
 	metalText.text = str(resourceBuilding.resources["Metal"]) + " / " + str(resourceBuilding.baseMaxResource * resourceBuilding.buildingData.currentLevel)
 	medicineText.text = str(resourceBuilding.resources["Medicine"]) + " / " + str(resourceBuilding.baseMaxResource * resourceBuilding.buildingData.currentLevel)
 	foodText.text = str(resourceBuilding.resources["Food"]) + " / " + str(resourceBuilding.baseMaxResource * resourceBuilding.buildingData.currentLevel)
+	if constructionMenuOpen: openConstructionMenu()
 
 func openConstructionMenu():
 	openConstructionButton.visible = false
 	constructionMenu.visible = true
+	constructionMenuOpen = true
 	
 	# Delete previously made buttons
 	if spawnedButtons.size() > 0:
@@ -60,20 +63,21 @@ func openConstructionMenu():
 func closeConstructionMenu():
 	openConstructionButton.visible = true
 	constructionMenu.visible = false
+	constructionMenuOpen = false
 
 func CheckUpgradeCost(building: Building):
 	if building.currentLevel >= constructionBuilding.buildingData.currentLevel and building != constructionBuilding.buildingData:
 		return true
 	
 	#Check each resource type for cost
-	if resourceBuilding.resources["Wood"] < (building.baseWoodCost * (building.currentLevel + 1)):
+	elif resourceBuilding.resources["Wood"] < (building.baseWoodCost * (building.currentLevel)):
 		return true
-	if resourceBuilding.resources["Stone"] < (building.baseStoneCost * (building.currentLevel + 1)):
+	elif resourceBuilding.resources["Stone"] < (building.baseStoneCost * (building.currentLevel)):
 		return true
-	if resourceBuilding.resources["Metal"] < (building.baseMetalCost * (building.currentLevel + 1)):
+	elif resourceBuilding.resources["Metal"] < (building.baseMetalCost * (building.currentLevel)):
 		return true
-	if resourceBuilding.resources["Medicine"] < (building.baseMedicineCost * (building.currentLevel + 1)):
+	elif resourceBuilding.resources["Medicine"] < (building.baseMedicineCost * (building.currentLevel)):
 		return true
-	if resourceBuilding.resources["Food"] < (building.baseFoodCost * (building.currentLevel + 1)):
+	elif resourceBuilding.resources["Food"] < (building.baseFoodCost * (building.currentLevel)):
 		return true
 	return false

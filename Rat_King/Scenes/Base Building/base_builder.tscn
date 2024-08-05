@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cd21l4ie4jtmd"]
+[gd_scene load_steps=8 format=3 uid="uid://cd21l4ie4jtmd"]
 
 [ext_resource type="PackedScene" uid="uid://8axatdbh4k04" path="res://Scenes/Base Building/Resource Building.tscn" id="1_7m624"]
 [ext_resource type="Script" path="res://Scenes/Base Building/Base Builder UI.gd" id="1_gktj0"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dq1fjdf654n7x" path="res://Scenes/Base Building/Construction Building.tscn" id="2_cd5jo"]
 [ext_resource type="Script" path="res://Scripts/Building Manager.gd" id="2_iggu3"]
 [ext_resource type="Texture2D" uid="uid://c8pf4sqjt33em" path="res://Art/Prototype Assets/resources_basic.png" id="3_etf2s"]
+[ext_resource type="Script" path="res://Scripts/Debug increase resource button.gd" id="4_r6p64"]
 
 [node name="Base Builder" type="Node2D"]
 
@@ -208,9 +209,13 @@ theme_override_font_sizes/normal_font_size = 24
 text = "0"
 
 [node name="Debug increase resource button" type="Button" parent="Base Builder UI"]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = -561.0
+offset_top = -110.0
+offset_right = -386.0
+offset_bottom = -68.0
+theme_override_font_sizes/font_size = 24
 text = "+++ Resources"
+script = ExtResource("4_r6p64")
 
 [node name="Building Manager" type="Node2D" parent="."]
 script = ExtResource("2_iggu3")
@@ -223,3 +228,6 @@ script = ExtResource("2_iggu3")
 
 [connection signal="pressed" from="Base Builder UI/Construction Button" to="Base Builder UI" method="openConstructionMenu"]
 [connection signal="pressed" from="Base Builder UI/Construction Menu/Close Button" to="Base Builder UI" method="closeConstructionMenu"]
+[connection signal="pressed" from="Base Builder UI/Debug increase resource button" to="Base Builder UI/Debug increase resource button" method="_on_pressed"]
+[connection signal="spentResource" from="Construction Building" to="Resource Building" method="decreaseResource"]
+[connection signal="resourcesChanged" from="Resource Building" to="Base Builder UI" method="updateResourceDisplay"]
