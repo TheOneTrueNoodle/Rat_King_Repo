@@ -10,6 +10,8 @@
 
 [node name="Base Builder" type="Node2D"]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [node name="Base Builder UI" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 script = ExtResource("1_gktj0")
@@ -64,6 +66,77 @@ offset_left = 510.0
 offset_top = 10.0
 offset_right = 549.0
 offset_bottom = 603.0
+
+[node name="Blacksmith Button" type="Button" parent="Base Builder UI"]
+offset_left = -312.0
+offset_top = -296.0
+offset_right = -84.0
+offset_bottom = -233.0
+theme_override_font_sizes/font_size = 32
+text = "Blacksmith
+"
+
+[node name="Blacksmith Menu" type="Control" parent="Base Builder UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Close Button" type="Button" parent="Base Builder UI/Blacksmith Menu"]
+offset_left = -551.0
+offset_top = -298.0
+offset_right = -323.0
+offset_bottom = -235.0
+theme_override_font_sizes/font_size = 32
+text = "Close
+"
+
+[node name="Recruit Button" type="Button" parent="Base Builder UI"]
+offset_left = -72.0
+offset_top = -296.0
+offset_right = 156.0
+offset_bottom = -233.0
+theme_override_font_sizes/font_size = 32
+text = "Recruit
+"
+
+[node name="Recruit Menu" type="Control" parent="Base Builder UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Close Button" type="Button" parent="Base Builder UI/Recruit Menu"]
+offset_left = -551.0
+offset_top = -298.0
+offset_right = -323.0
+offset_bottom = -235.0
+theme_override_font_sizes/font_size = 32
+text = "Close
+"
+
+[node name="Scout Button" type="Button" parent="Base Builder UI"]
+offset_left = 168.0
+offset_top = -296.0
+offset_right = 396.0
+offset_bottom = -233.0
+theme_override_font_sizes/font_size = 32
+text = "Scout"
+
+[node name="Scout Menu" type="Control" parent="Base Builder UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Close Button" type="Button" parent="Base Builder UI/Scout Menu"]
+offset_left = -551.0
+offset_top = -298.0
+offset_right = -323.0
+offset_bottom = -235.0
+theme_override_font_sizes/font_size = 32
+text = "Close
+"
 
 [node name="Resources Display" type="Control" parent="Base Builder UI"]
 layout_mode = 3
@@ -224,10 +297,14 @@ script = ExtResource("2_iggu3")
 
 [node name="Resource Building" parent="." instance=ExtResource("1_7m624")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [connection signal="pressed" from="Base Builder UI/Construction Button" to="Base Builder UI" method="openConstructionMenu"]
 [connection signal="pressed" from="Base Builder UI/Construction Menu/Close Button" to="Base Builder UI" method="closeConstructionMenu"]
+[connection signal="pressed" from="Base Builder UI/Blacksmith Button" to="Base Builder UI" method="openConstructionMenu"]
+[connection signal="pressed" from="Base Builder UI/Blacksmith Menu/Close Button" to="Base Builder UI" method="closeConstructionMenu"]
+[connection signal="pressed" from="Base Builder UI/Recruit Button" to="Base Builder UI" method="openConstructionMenu"]
+[connection signal="pressed" from="Base Builder UI/Recruit Menu/Close Button" to="Base Builder UI" method="closeConstructionMenu"]
+[connection signal="pressed" from="Base Builder UI/Scout Button" to="Base Builder UI" method="openConstructionMenu"]
+[connection signal="pressed" from="Base Builder UI/Scout Menu/Close Button" to="Base Builder UI" method="closeConstructionMenu"]
 [connection signal="pressed" from="Base Builder UI/Debug increase resource button" to="Base Builder UI/Debug increase resource button" method="_on_pressed"]
 [connection signal="spentResource" from="Construction Building" to="Resource Building" method="decreaseResource"]
 [connection signal="resourcesChanged" from="Resource Building" to="Base Builder UI" method="updateResourceDisplay"]

@@ -3,12 +3,24 @@ extends CanvasLayer
 # Data Variables
 @onready var buildingManager = $"../Building Manager"
 
+#Button & Menu Variables
+#Construction
+@onready var constructionMenu = $"Construction Menu"
+@onready var openConstructionButton = $"Construction Button"
+#Blacksmith
+@onready var blacksmithMenu = $"Blacksmith Menu"
+@onready var openBlacksmithButton = $"Blacksmith Button"
+#Recruitment
+@onready var recruitMenu = $"Recruit Menu"
+@onready var openRecruitutton = $"Recruit Button"
+#Scout
+@onready var scoutMenu = $"Scout Menu"
+@onready var openScoutButton = $"Scout Button"
+
 # Construction Menu Variables
 @onready var constructionBuilding = $"../Construction Building"
 var constructionMenuOpen: bool = false
 
-@onready var constructionMenu = $"Construction Menu"
-@onready var openConstructionButton = $"Construction Button"
 
 @export var buildingUpgradeButton: PackedScene
 @onready var buildingUpgradeButtonContainer = $"Construction Menu/Panel/ScrollContainer/VBoxContainer"
@@ -81,3 +93,9 @@ func CheckUpgradeCost(building: Building):
 	elif resourceBuilding.resources["Food"] < (building.baseFoodCost * (building.currentLevel)):
 		return true
 	return false
+
+func openBlacksmithDisplay():
+	pass
+
+func closeBlacksmithDisplay():
+	pass
