@@ -1,9 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://8axatdbh4k04"]
 
 [ext_resource type="Script" path="res://Scripts/Base_Resources.gd" id="1_qhfuk"]
-[ext_resource type="PackedScene" uid="uid://ci6q4aqf8wpfo" path="res://Scenes/Base Building/building_level_handler.tscn" id="2_5kfh1"]
+[ext_resource type="PackedScene" uid="uid://ci6q4aqf8wpfo" path="res://Scenes/Base Building/Building Handler.tscn" id="2_twcuv"]
 
 [node name="Resources" type="Node2D" groups=["Building"]]
 script = ExtResource("1_qhfuk")
 
-[node name="Building Level Handler" parent="." instance=ExtResource("2_5kfh1")]
+[node name="Building Handler" parent="." instance=ExtResource("2_twcuv")]
+buildingName = "Storage"
+currentLevel = 1

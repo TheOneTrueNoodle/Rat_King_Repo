@@ -1,7 +1,7 @@
 extends Node2D
 
 #This script handles all resources currently in the base!
-@onready var buildingLevel: BuildingLevel = $"Building Level Handler"
+@onready var buildingLevel: Building = $"Building Level Handler"
 
 var teeth: int #Currency!
 
