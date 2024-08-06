@@ -20,12 +20,15 @@ var resourceBuilding
 func setup(newBuildingManager, newResourceManager):
 	buildingManager = newBuildingManager
 	resourceBuilding = newResourceManager
-	DayManager.dayPassed.connect(openConstructionMenu)
 
 func openConstructionMenu():
 	openConstructionButton.visible = false
 	constructionMenu.visible = true
 	constructionMenuOpen = true
+	
+	#Update visuals while upgrading
+	DayManager.dayPassed.connect(openConstructionMenu)
+	
 	
 	# Delete previously made buttons
 	if spawnedButtons.size() > 0:
@@ -55,6 +58,7 @@ func closeConstructionMenu():
 	openConstructionButton.visible = true
 	constructionMenu.visible = false
 	constructionMenuOpen = false
+	DayManager.dayPassed.disconnect(openConstructionMenu)
 
 func CanUpgrade(building: Building):
 	if constructionBuilding.upgrading: return true
