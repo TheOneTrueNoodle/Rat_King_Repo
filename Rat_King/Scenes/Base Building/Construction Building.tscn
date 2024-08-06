@@ -10,6 +10,10 @@ script = ExtResource("1_o8jxr")
 script = ExtResource("1_4bo6g")
 buildingName = "Construction"
 currentLevel = 1
-baseWoodCost = 10
-baseStoneCost = 10
-baseMetalCost = 10
+baseCosts = {
+"Food": 0,
+"Medicine": 0,
+"Metal": 10,
+"Stone": 10,
+"Wood": 10
+}

@@ -1,6 +1,33 @@
-[gd_scene format=3 uid="uid://bsll6qbqnp4dy"]
+[gd_scene load_steps=3 format=3 uid="uid://bsll6qbqnp4dy"]
 
-[node name="Button" type="Button"]
+[ext_resource type="Script" path="res://Scripts/BuildingUpgradeButton.gd" id="1_w5foq"]
+[ext_resource type="PackedScene" uid="uid://cuatfs46uwfnt" path="res://Scenes/Base Building/upgrade_cost_disp.tscn" id="2_433ql"]
+
+[node name="Button" type="Button" node_paths=PackedStringArray("costDisplayParent")]
+custom_minimum_size = Vector2(460, 70)
+offset_right = 460.0
+offset_bottom = 70.0
 theme_override_font_sizes/font_size = 32
-text = "Building A
-"
+alignment = 0
+script = ExtResource("1_w5foq")
+costDisplayScene = ExtResource("2_433ql")
+costDisplayParent = NodePath("HBoxContainer")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_right = 448.0
+offset_bottom = 45.0
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 32
+text = "Construction"
+fit_content = true
+scroll_active = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(30, 20)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 48.0
+offset_right = 440.0
+offset_bottom = 72.0

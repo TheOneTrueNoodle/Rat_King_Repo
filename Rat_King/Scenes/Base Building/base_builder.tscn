@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cd21l4ie4jtmd"]
+[gd_scene load_steps=9 format=3 uid="uid://cd21l4ie4jtmd"]
 
 [ext_resource type="PackedScene" uid="uid://8axatdbh4k04" path="res://Scenes/Base Building/Resource Building.tscn" id="1_7m624"]
 [ext_resource type="Script" path="res://Scenes/Base Building/Base Builder UI.gd" id="1_gktj0"]
 [ext_resource type="PackedScene" uid="uid://bsll6qbqnp4dy" path="res://Scenes/Base Building/UpgradeButton.tscn" id="2_6h520"]
 [ext_resource type="PackedScene" uid="uid://dq1fjdf654n7x" path="res://Scenes/Base Building/Construction Building.tscn" id="2_cd5jo"]
 [ext_resource type="Script" path="res://Scripts/Building Manager.gd" id="2_iggu3"]
+[ext_resource type="Script" path="res://Scenes/Base Building/Construction UI.gd" id="3_87ibx"]
 [ext_resource type="Texture2D" uid="uid://c8pf4sqjt33em" path="res://Art/Prototype Assets/resources_basic.png" id="3_etf2s"]
 [ext_resource type="Script" path="res://Scripts/Debug increase resource button.gd" id="4_r6p64"]
 
@@ -15,9 +16,17 @@
 [node name="Base Builder UI" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 script = ExtResource("1_gktj0")
+
+[node name="Construction Parent" type="Control" parent="Base Builder UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_87ibx")
 buildingUpgradeButton = ExtResource("2_6h520")
 
-[node name="Construction Button" type="Button" parent="Base Builder UI"]
+[node name="Construction Button" type="Button" parent="Base Builder UI/Construction Parent"]
+layout_mode = 0
 offset_left = -551.0
 offset_top = -298.0
 offset_right = -323.0
@@ -26,14 +35,14 @@ theme_override_font_sizes/font_size = 32
 text = "Construction
 "
 
-[node name="Construction Menu" type="Control" parent="Base Builder UI"]
+[node name="Construction Menu" type="Control" parent="Base Builder UI/Construction Parent"]
 visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Close Button" type="Button" parent="Base Builder UI/Construction Menu"]
+[node name="Close Button" type="Button" parent="Base Builder UI/Construction Parent/Construction Menu"]
 layout_mode = 0
 offset_left = -551.0
 offset_top = -298.0
@@ -43,31 +52,33 @@ theme_override_font_sizes/font_size = 32
 text = "Close
 "
 
-[node name="Panel" type="Panel" parent="Base Builder UI/Construction Menu"]
+[node name="Panel" type="Panel" parent="Base Builder UI/Construction Parent/Construction Menu"]
 layout_mode = 0
 offset_top = -302.0
 offset_right = 551.0
 offset_bottom = 305.0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Base Builder UI/Construction Menu/Panel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Base Builder UI/Construction Parent/Construction Menu/Panel"]
 layout_mode = 0
 offset_left = 25.0
 offset_right = 491.0
 offset_bottom = 608.0
+horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Base Builder UI/Construction Menu/Panel/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Base Builder UI/Construction Parent/Construction Menu/Panel/ScrollContainer"]
 clip_contents = true
-custom_minimum_size = Vector2(460, 65)
+custom_minimum_size = Vector2(460, 100)
 layout_mode = 2
 
-[node name="VScrollBar" type="VScrollBar" parent="Base Builder UI/Construction Menu/Panel"]
-layout_mode = 0
-offset_left = 510.0
-offset_top = 10.0
-offset_right = 549.0
-offset_bottom = 603.0
+[node name="Blacksmith Parent" type="Control" parent="Base Builder UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Blacksmith Button" type="Button" parent="Base Builder UI"]
+[node name="Blacksmith Button" type="Button" parent="Base Builder UI/Blacksmith Parent"]
+layout_mode = 0
 offset_left = -312.0
 offset_top = -296.0
 offset_right = -84.0
@@ -76,13 +87,14 @@ theme_override_font_sizes/font_size = 32
 text = "Blacksmith
 "
 
-[node name="Blacksmith Menu" type="Control" parent="Base Builder UI"]
+[node name="Blacksmith Menu" type="Control" parent="Base Builder UI/Blacksmith Parent"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Close Button" type="Button" parent="Base Builder UI/Blacksmith Menu"]
+[node name="Close Button" type="Button" parent="Base Builder UI/Blacksmith Parent/Blacksmith Menu"]
+layout_mode = 0
 offset_left = -551.0
 offset_top = -298.0
 offset_right = -323.0
@@ -91,7 +103,15 @@ theme_override_font_sizes/font_size = 32
 text = "Close
 "
 
-[node name="Recruit Button" type="Button" parent="Base Builder UI"]
+[node name="Recruit Parent" type="Control" parent="Base Builder UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Recruit Button" type="Button" parent="Base Builder UI/Recruit Parent"]
+layout_mode = 0
 offset_left = -72.0
 offset_top = -296.0
 offset_right = 156.0
@@ -100,13 +120,14 @@ theme_override_font_sizes/font_size = 32
 text = "Recruit
 "
 
-[node name="Recruit Menu" type="Control" parent="Base Builder UI"]
+[node name="Recruit Menu" type="Control" parent="Base Builder UI/Recruit Parent"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Close Button" type="Button" parent="Base Builder UI/Recruit Menu"]
+[node name="Close Button" type="Button" parent="Base Builder UI/Recruit Parent/Recruit Menu"]
+layout_mode = 0
 offset_left = -551.0
 offset_top = -298.0
 offset_right = -323.0
@@ -115,7 +136,15 @@ theme_override_font_sizes/font_size = 32
 text = "Close
 "
 
-[node name="Scout Button" type="Button" parent="Base Builder UI"]
+[node name="Scout Parent" type="Control" parent="Base Builder UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Scout Button" type="Button" parent="Base Builder UI/Scout Parent"]
+layout_mode = 0
 offset_left = 168.0
 offset_top = -296.0
 offset_right = 396.0
@@ -123,13 +152,14 @@ offset_bottom = -233.0
 theme_override_font_sizes/font_size = 32
 text = "Scout"
 
-[node name="Scout Menu" type="Control" parent="Base Builder UI"]
+[node name="Scout Menu" type="Control" parent="Base Builder UI/Scout Parent"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Close Button" type="Button" parent="Base Builder UI/Scout Menu"]
+[node name="Close Button" type="Button" parent="Base Builder UI/Scout Parent/Scout Menu"]
+layout_mode = 0
 offset_left = -551.0
 offset_top = -298.0
 offset_right = -323.0
@@ -297,14 +327,14 @@ script = ExtResource("2_iggu3")
 
 [node name="Resource Building" parent="." instance=ExtResource("1_7m624")]
 
-[connection signal="pressed" from="Base Builder UI/Construction Button" to="Base Builder UI" method="openConstructionMenu"]
-[connection signal="pressed" from="Base Builder UI/Construction Menu/Close Button" to="Base Builder UI" method="closeConstructionMenu"]
-[connection signal="pressed" from="Base Builder UI/Blacksmith Button" to="Base Builder UI" method="openConstructionMenu"]
-[connection signal="pressed" from="Base Builder UI/Blacksmith Menu/Close Button" to="Base Builder UI" method="closeConstructionMenu"]
-[connection signal="pressed" from="Base Builder UI/Recruit Button" to="Base Builder UI" method="openConstructionMenu"]
-[connection signal="pressed" from="Base Builder UI/Recruit Menu/Close Button" to="Base Builder UI" method="closeConstructionMenu"]
-[connection signal="pressed" from="Base Builder UI/Scout Button" to="Base Builder UI" method="openConstructionMenu"]
-[connection signal="pressed" from="Base Builder UI/Scout Menu/Close Button" to="Base Builder UI" method="closeConstructionMenu"]
+[connection signal="pressed" from="Base Builder UI/Construction Parent/Construction Button" to="Base Builder UI/Construction Parent" method="openConstructionMenu"]
+[connection signal="pressed" from="Base Builder UI/Construction Parent/Construction Menu/Close Button" to="Base Builder UI/Construction Parent" method="closeConstructionMenu"]
+[connection signal="pressed" from="Base Builder UI/Blacksmith Parent/Blacksmith Button" to="Base Builder UI" method="openConstructionMenu"]
+[connection signal="pressed" from="Base Builder UI/Blacksmith Parent/Blacksmith Menu/Close Button" to="Base Builder UI" method="closeConstructionMenu"]
+[connection signal="pressed" from="Base Builder UI/Recruit Parent/Recruit Button" to="Base Builder UI" method="openConstructionMenu"]
+[connection signal="pressed" from="Base Builder UI/Recruit Parent/Recruit Menu/Close Button" to="Base Builder UI" method="closeConstructionMenu"]
+[connection signal="pressed" from="Base Builder UI/Scout Parent/Scout Button" to="Base Builder UI" method="openConstructionMenu"]
+[connection signal="pressed" from="Base Builder UI/Scout Parent/Scout Menu/Close Button" to="Base Builder UI" method="closeConstructionMenu"]
 [connection signal="pressed" from="Base Builder UI/Debug increase resource button" to="Base Builder UI/Debug increase resource button" method="_on_pressed"]
 [connection signal="spentResource" from="Construction Building" to="Resource Building" method="decreaseResource"]
 [connection signal="resourcesChanged" from="Resource Building" to="Base Builder UI" method="updateResourceDisplay"]

@@ -14,8 +14,9 @@ func upgradeBuilding(building: Building):
 
 func spendResource(building: Building):
 	# Handle spent resources
-	spentResource.emit("Wood", building.baseWoodCost * building.currentLevel)
-	spentResource.emit("Stone", building.baseStoneCost * building.currentLevel)
-	spentResource.emit("Metal", building.baseMetalCost * building.currentLevel)
-	spentResource.emit("Medicine", building.baseMedicineCost * building.currentLevel)
-	spentResource.emit("Food", building.baseFoodCost * building.currentLevel)
+	for key in building.baseCosts.keys():
+		# Key is the string of the resource type!
+		if building.baseCosts[key] == 0: continue
+		
+		var levelMult = 1 if building.currentLevel == 0 else building.currentLevel
+		spentResource.emit(key, building.baseCosts[key] * levelMult)

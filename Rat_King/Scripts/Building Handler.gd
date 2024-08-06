@@ -7,12 +7,13 @@ class_name Building
 @export var currentLevel: int = 0
 
 #Resource costs to upgrade!
-@export_group("Building Costs")
-@export var baseWoodCost: int = 0
-@export var baseStoneCost: int = 0
-@export var baseMetalCost: int = 0
-@export var baseMedicineCost: int = 0
-@export var baseFoodCost: int = 0
+@export var baseCosts: Dictionary = {
+	"Wood" = 0,
+	"Stone" = 0,
+	"Metal" = 0,
+	"Medicine" = 0,
+	"Food" = 0
+}
 
 func levelUp():
 	currentLevel += 1
