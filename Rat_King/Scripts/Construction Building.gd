@@ -4,13 +4,38 @@ extends Node2D
 
 signal spentResource(type: String, cost: int)
 
-func upgradeBuilding(building: Building):
+var upgrading: bool = false # Bool for if we are upgrading something!
+var currentBuilding: Building # Save what building is being upgraded!
+var daysPassed
+
+func startUpgrading(building: Building):
+	#Check if can upgrade as normal!
+	#Listen for the day passing signal! Set variable to stop more constructions happening!
 	if building.currentLevel < building.maxLevel and building.currentLevel < buildingData.currentLevel:
-		building.levelUp()
+		currentBuilding = building
 		spendResource(building)
+		upgrading = true
+		daysPassed = 0
+		DayManager.dayPassed.connect(dayPass)
 	elif building == buildingData:
-		building.levelUp()
+		currentBuilding = building
 		spendResource(building)
+		upgrading = true
+		daysPassed = 0
+		DayManager.dayPassed.connect(dayPass)
+
+func dayPass():
+	daysPassed += 1
+	if daysPassed >= currentBuilding.timeToUpgrade: finishUpgrade()
+
+func finishUpgrade():
+	currentBuilding.levelUp()
+	upgrading = false
+	
+	DayManager.dayPassed.disconnect(dayPass)
+	
+	#Now stop listening for the days passing. 
+	DayManager.pauseTimer()
 
 func spendResource(building: Building):
 	# Handle spent resources

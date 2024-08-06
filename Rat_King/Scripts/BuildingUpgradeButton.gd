@@ -4,11 +4,12 @@ var costs = {}
 @export var costDisplayScene: PackedScene
 @export var costDisplayParent: HBoxContainer
 
-@onready var textDisp = $RichTextLabel
+@onready var nameDisp = $"Building Name"
+@onready var dayDisp = $"Day Disp"
 
 func setupButtonVisuals(building: Building):
 	# Set button text
-	textDisp.text = building.buildingName + ": Lv " + str(building.currentLevel) + " -> " + str(building.currentLevel + 1)
+	nameDisp.text = building.buildingName + ": Lv " + str(building.currentLevel) + " -> " + str(building.currentLevel + 1)
 	
 	#Spawn button displays
 	for key in building.baseCosts.keys():
@@ -20,3 +21,5 @@ func setupButtonVisuals(building: Building):
 			var levelMult = 1 if building.currentLevel == 0 else building.currentLevel
 			
 			newCost.setup(building.baseCosts[key] * levelMult, key)
+			
+			dayDisp.text = str(building.timeToUpgrade) + " days"

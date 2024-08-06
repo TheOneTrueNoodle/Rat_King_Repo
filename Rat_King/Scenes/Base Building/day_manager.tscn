@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp6mn6hteu7c8"]
+
+[ext_resource type="Script" path="res://Scripts/Day Manager.gd" id="1_55kit"]
+
+[node name="Day Manager" type="Node2D"]
+script = ExtResource("1_55kit")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Day Timer UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -72.0
+offset_top = 266.0
+offset_right = -32.0
+offset_bottom = 306.0
+
+[node name="Play Button" type="Button" parent="CanvasLayer/Day Timer UI"]
+layout_mode = 0
+offset_left = 154.0
+offset_top = 13.0
+offset_right = 231.0
+offset_bottom = 55.0
+theme_override_font_sizes/font_size = 24
+text = "Play
+"
+
+[node name="Pause Button" type="Button" parent="CanvasLayer/Day Timer UI"]
+layout_mode = 0
+offset_left = -94.0
+offset_top = 13.0
+offset_right = -16.0
+offset_bottom = 55.0
+theme_override_font_sizes/font_size = 24
+text = "Pause"
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Day Timer UI"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 15.0
+offset_right = 127.0
+offset_bottom = 55.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Day Timer UI/Panel"]
+layout_mode = 0
+offset_right = 116.0
+offset_bottom = 40.0
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]Day 1[/center]"
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="pressed" from="CanvasLayer/Day Timer UI/Play Button" to="." method="startTimer"]
+[connection signal="pressed" from="CanvasLayer/Day Timer UI/Pause Button" to="." method="pauseTimer"]
+[connection signal="timeout" from="Timer" to="." method="nextDay"]

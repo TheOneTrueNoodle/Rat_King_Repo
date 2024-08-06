@@ -13,14 +13,27 @@ script = ExtResource("1_w5foq")
 costDisplayScene = ExtResource("2_433ql")
 costDisplayParent = NodePath("HBoxContainer")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="Building Name" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 16.0
 offset_right = 448.0
 offset_bottom = 45.0
 mouse_filter = 1
 theme_override_font_sizes/normal_font_size = 32
-text = "Construction"
+text = "Construction: Lv 1 -> 2"
+fit_content = true
+scroll_active = false
+
+[node name="Day Disp" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 40.0
+offset_right = 488.0
+offset_bottom = 85.0
+scale = Vector2(0.6, 0.6)
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 32
+text = "13 days"
 fit_content = true
 scroll_active = false
 

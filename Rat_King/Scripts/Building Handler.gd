@@ -6,6 +6,9 @@ class_name Building
 @export var maxLevel: int = 20
 @export var currentLevel: int = 0
 
+#Time to upgrade in days!
+@export var timeToUpgrade = 3
+
 #Resource costs to upgrade!
 @export var baseCosts: Dictionary = {
 	"Wood" = 0,

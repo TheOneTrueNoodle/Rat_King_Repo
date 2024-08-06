@@ -20,6 +20,7 @@ var resourceBuilding
 func setup(newBuildingManager, newResourceManager):
 	buildingManager = newBuildingManager
 	resourceBuilding = newResourceManager
+	DayManager.dayPassed.connect(openConstructionMenu)
 
 func openConstructionMenu():
 	openConstructionButton.visible = false
@@ -33,7 +34,7 @@ func openConstructionMenu():
 	spawnedButtons = {}
 	
 	# Now create menu buttons for every building to upgrade!!!
-	for building in buildingManager.buildings.values():
+	for building: Building in buildingManager.buildings.values():
 		# Spawn new button
 		var newButton = buildingUpgradeButton.instantiate()
 		buildingUpgradeButtonContainer.add_child(newButton)
@@ -42,7 +43,7 @@ func openConstructionMenu():
 		newButton.setupButtonVisuals(building)
 		
 		# Set button signals
-		newButton.pressed.connect(constructionBuilding.upgradeBuilding.bind(building))
+		newButton.pressed.connect(constructionBuilding.startUpgrading.bind(building))
 		newButton.pressed.connect(self.openConstructionMenu)
 		
 		#Check if upgrade is affordable and can build it
@@ -56,6 +57,8 @@ func closeConstructionMenu():
 	constructionMenuOpen = false
 
 func CanUpgrade(building: Building):
+	if constructionBuilding.upgrading: return true
+	
 	if building.currentLevel >= constructionBuilding.buildingData.currentLevel and building != constructionBuilding.buildingData:
 		return true
 	
