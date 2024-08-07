@@ -16,13 +16,21 @@ func startUpgrading(building: Building):
 		spendResource(building)
 		upgrading = true
 		daysPassed = 0
-		DayManager.startTask(finishUpgrade, building.timeToUpgrade)
+		
+		var taskNameString = "Upgrade " + building.buildingName
+		if building.currentLevel == 0: taskNameString = "Build " + building.buildingName
+		
+		DayManager.startTask(finishUpgrade, building.timeToUpgrade, taskNameString)
 	elif building == buildingData:
 		currentBuilding = building
 		spendResource(building)
 		upgrading = true
 		daysPassed = 0
-		DayManager.startTask(finishUpgrade, building.timeToUpgrade)
+		
+		var taskNameString = "Upgrade " + building.buildingName
+		if building.currentLevel == 0: taskNameString = "Build " + building.buildingName
+		
+		DayManager.startTask(finishUpgrade, building.timeToUpgrade, taskNameString)
 
 func finishUpgrade():
 	currentBuilding.levelUp()

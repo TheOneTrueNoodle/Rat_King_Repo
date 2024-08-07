@@ -10,10 +10,11 @@ var currentDay = 0
 @onready var dayTimer = $Timer
 
 # Task Variables
-@onready var taskParent = $"Task Holder"
+@onready var taskParent = $"CanvasLayer/Task UI/Panel/ScrollContainer/Task Holder"
 @export var task: PackedScene
 
 signal dayPassed
+signal beginNewTask
 
 func _ready():
 	updateDayDisplay() 
@@ -24,11 +25,12 @@ func startTimer():
 func pauseTimer():
 	dayTimer.stop()
 
-func startTask(function, requiredDays):
+func startTask(function, requiredDays: int, taskName: String):
 	var newTask = task.instantiate()
 	taskParent.add_child(newTask)
 	newTask.taskComplete.connect(function)
-	newTask.setup(requiredDays)
+	newTask.setup(requiredDays, taskName)
+	beginNewTask.emit()
 	pass
 
 func nextDay():

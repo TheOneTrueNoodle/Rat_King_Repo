@@ -2,5 +2,32 @@
 
 [ext_resource type="Script" path="res://Scripts/Task.gd" id="1_a0ist"]
 
-[node name="Task" type="Node2D"]
+[node name="Task" type="Control"]
+custom_minimum_size = Vector2(248, 30)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 248.0
+offset_bottom = 30.0
 script = ExtResource("1_a0ist")
+
+[node name="Task Name" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_right = 364.0
+offset_bottom = 60.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/normal_font_size = 32
+text = "Upgrade Construction"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Days remaining" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 182.0
+offset_right = 297.0
+offset_bottom = 60.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[right] 3 days"
+scroll_active = false
+autowrap_mode = 0
