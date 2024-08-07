@@ -52,9 +52,27 @@ theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "[center]Day 1[/center]"
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Tasks Button" type="Button" parent="CanvasLayer"]
+offset_left = 479.0
+offset_top = 279.0
+offset_right = 574.0
+offset_bottom = 321.0
+theme_override_font_sizes/font_size = 24
+text = "Tasks
+"
 
-[node name="Task Holder" type="Node2D" parent="."]
+[node name="Task UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Task UI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="pressed" from="CanvasLayer/Day Timer UI/Play Button" to="." method="startTimer"]
 [connection signal="pressed" from="CanvasLayer/Day Timer UI/Pause Button" to="." method="pauseTimer"]

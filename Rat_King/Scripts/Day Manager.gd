@@ -2,9 +2,12 @@ extends Node2D
 
 var currentDay = 0
 
+# Visuals
+@onready var canvas = $CanvasLayer
+@onready var dayDisp = $"CanvasLayer/Day Timer UI/Panel/RichTextLabel"
+
 # Timer Variables
 @onready var dayTimer = $Timer
-@onready var dayDisp = $"CanvasLayer/Day Timer UI/Panel/RichTextLabel"
 
 # Task Variables
 @onready var taskParent = $"Task Holder"
@@ -41,3 +44,9 @@ func nextDay():
 
 func updateDayDisplay():
 	dayDisp.text = "[center] Day " + str(currentDay) + "[/center]"
+
+func hideDisplay():
+	canvas.visible = false
+
+func showDisplay():
+	canvas.visible = true
