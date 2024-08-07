@@ -16,23 +16,17 @@ func startUpgrading(building: Building):
 		spendResource(building)
 		upgrading = true
 		daysPassed = 0
-		DayManager.dayPassed.connect(dayPass)
+		DayManager.startTask(finishUpgrade, building.timeToUpgrade)
 	elif building == buildingData:
 		currentBuilding = building
 		spendResource(building)
 		upgrading = true
 		daysPassed = 0
-		DayManager.dayPassed.connect(dayPass)
-
-func dayPass():
-	daysPassed += 1
-	if daysPassed >= currentBuilding.timeToUpgrade: finishUpgrade()
+		DayManager.startTask(finishUpgrade, building.timeToUpgrade)
 
 func finishUpgrade():
 	currentBuilding.levelUp()
 	upgrading = false
-	
-	DayManager.dayPassed.disconnect(dayPass)
 	
 	#Now stop listening for the days passing. 
 	DayManager.pauseTimer()
