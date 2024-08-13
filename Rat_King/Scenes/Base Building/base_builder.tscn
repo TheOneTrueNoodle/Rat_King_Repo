@@ -328,6 +328,8 @@ theme_override_font_sizes/font_size = 24
 text = "+++ Resources"
 script = ExtResource("4_r6p64")
 
+[node name="Node2D" type="Node2D" parent="Base Builder UI"]
+
 [node name="Building Manager" type="Node2D" parent="."]
 script = ExtResource("2_iggu3")
 

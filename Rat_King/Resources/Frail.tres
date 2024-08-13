@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Quirk" load_steps=2 format=3 uid="uid://cof6aw8isw1js"]
+
+[ext_resource type="Script" path="res://Scripts/Quirks.gd" id="1_tkutm"]
+
+[resource]
+script = ExtResource("1_tkutm")
+Quirk_Name = "Frail"
+stat = 0
+op = 1
+value = 1.0
